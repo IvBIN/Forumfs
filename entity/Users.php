@@ -2,6 +2,7 @@
 
 namespace app\entity;
 
+use app\repository\UsersRepository;
 use yii\web\IdentityInterface;
 
 /**
@@ -12,22 +13,31 @@ use yii\web\IdentityInterface;
  * @property string photo аватар пользователя
  *
  */
-*/
-
 class Users extends \yii\db\ActiveRecord implements IdentityInterface
 {
     public static function findIdentity($id)
     {
+        return new static(UsersRepository::getUserById($id));
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function validatePassword($password)
+    {
+        return password_verify($password, $this->password);
+    }
+
+    public function findUserByLogin($login)
+    {
+        return new static(UsersRepository::getUserByLogin($login));
     }
 
     public static function findIdentityByAccessToken($token, $type = null)
     {
         // TODO: Implement findIdentityByAccessToken() method.
-    }
-
-    public function getId()
-    {
-        // TODO: Implement getId() method.
     }
 
     public function getAuthKey()

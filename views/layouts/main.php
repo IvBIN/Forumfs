@@ -21,7 +21,7 @@ AppAsset::register($this);
 
 <header>
     <div class="container">
-        <a href="./" class="logo">5pda</a>
+        <a href="/" class="logo">5pda</a>
         <nav>
             <ul>
                 <li><a href="#" class="">Случайная тема</a></li>

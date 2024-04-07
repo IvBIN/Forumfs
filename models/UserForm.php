@@ -2,21 +2,30 @@
 
 namespace app\models;
 
+use app\entity\Users;
+use app\repository\UsersRepository;
+use Yii;
 use yii\base\Model as Model;
 
 class UserForm extends Model
 {
     public $login;
     public $password;
-    public $_user;
+    public $_user = false;
+
+    public function attributeLabels()
+    {
+        return [
+            'login' => 'Логин',
+            'password' => 'Пароль'
+        ];
+    }
 
     public function rules()
     {
         return [
             [['login', 'password'], 'required'],
             ['password', 'validatePassword'],
-//           ['login', 'label' => 'Логин'],
-//           ['password', 'label' => 'Пароль'],
         ];
     }
 

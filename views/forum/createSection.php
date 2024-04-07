@@ -1,5 +1,5 @@
 <?php
-/**@var $model */
+/** @var $model */
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -18,14 +18,10 @@ use yii\widgets\ActiveForm;
                 'errorOptions' => ['class' => 'error']
             ]
         ]) ?>
-
-        <?= $form->field($model, 'login')->textInput() ?>
-        <?= $form->field($model, 'password')->passwordInput() ?>
-        <?= Html::submitButton("Войти", ['class' => 'btn']) ?>
+        <?= $form->field($model, 'title')->textInput() ?>
+        <?= $form->field($model, 'desc')->textarea(['value' => '', 'rows' => 10, 'cols' => 30, 'style' => 'resize:none;']) ?>
+        <?= Html::submitButton('Создать раздел', ['class' => 'btn']) ?>
 
         <?php ActiveForm::end() ?>
     </div>
 </div>
-
-
-

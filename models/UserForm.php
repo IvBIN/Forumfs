@@ -2,10 +2,9 @@
 
 namespace app\models;
 
-use app\entity\Users;
 use app\repository\UsersRepository;
 use Yii;
-use yii\base\Model as Model;
+use yii\base\Model;
 
 class UserForm extends Model
 {
@@ -29,12 +28,12 @@ class UserForm extends Model
         ];
     }
 
-    public function validatePassword($attributes, $params)
+    public function validatePassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attributes, "Ошибка в логине или пароле");
+                $this->addError($attribute, "Ошибка в логине или пароле");
             }
         }
     }
@@ -42,15 +41,15 @@ class UserForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findUserBylogin($this->login);
-        };
+            $this->_user = UsersRepository::getUserByLogin($this->login);
+        }
         return $this->_user;
     }
 
     public function login()
     {
         if ($this->validate()) {
-            return \Yii::$app->user->login($this->getUser());
+            return Yii::$app->user->login($this->getUser());
         }
         return false;
     }

@@ -17,6 +17,7 @@ class UserController extends Controller
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
+
         $model = new UserForm();
         if ($model->load(\Yii::$app->request->post()) && $model->login()) {
             return $this->goHome();
@@ -45,6 +46,6 @@ class UserController extends Controller
                 return $this->goHome();
             }
         }
-        return $this->render('registration', ['model' =>$model]);
+        return $this->render('registration', ['model' => $model]);
     }
 }

@@ -1,13 +1,9 @@
 <?php
 
 namespace app\models;
-<<<<<<< HEAD
-class RegistrationModel extends \yii\base\Model
-{
-=======
 
 use app\repository\UsersRepository;
-use yii\base\Model as Model;
+use yii\base\Model;
 
 class RegistrationModel extends Model
 {
@@ -29,7 +25,7 @@ class RegistrationModel extends Model
         if (!$this->hasErrors()) {
             $user = UsersRepository::getUserByLogin($this->login);
             if ($user) {
-                $this->addError($attribute, 'Такой пользователь уже существует!');
+                $this->addError($attribute, 'Такой пользоватль уже существует!');
             }
         }
     }
@@ -37,10 +33,9 @@ class RegistrationModel extends Model
     public function attributeLabels()
     {
         return [
-          'login' => 'Логин',
-          'password' => 'Пароль',
-          'passwordRepeat' => 'Повторенный пароль'
+            'login' => 'Логин',
+            'password' => 'Пароль',
+            'passwordRepeat' => 'Повторённый пароль',
         ];
     }
->>>>>>> origin/master
 }

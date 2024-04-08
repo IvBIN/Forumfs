@@ -1,6 +1,7 @@
 <?php
 
 namespace app\repository;
+
 use app\entity\Users;
 
 class UsersRepository
@@ -12,7 +13,9 @@ class UsersRepository
 
     public static function getUserByLogin($login)
     {
-        return Users::find()->where(['login' => $login])->one();
+        return Users::find()
+            ->where(['login' => $login])
+            ->one();
     }
 
     public static function createUser($login, $password)

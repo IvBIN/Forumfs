@@ -2,6 +2,9 @@
 
 namespace app\models;
 
+use app\entity\Users;
+use app\repository\UsersRepository;
+use Yii;
 use yii\base\Model as Model;
 
 class UserForm extends Model

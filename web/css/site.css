@@ -66,34 +66,3 @@ footer {
 main {
     margin: 10px 0;
 }
-
-.form_wrapper {
-
-}
-
-.form-group {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-top: 8px;
-}
-
-.label {
-    font-size: 1em;
-}
-
-.input {
-    outline: none;
-    border: none;
-    width: 100%;
-    font-size: 1.4em;
-    padding: 3px 5px;
-
-}
-
-.error {
-    color: red;
-    font-size: .8em;
-    margin-top: 4px;
-}

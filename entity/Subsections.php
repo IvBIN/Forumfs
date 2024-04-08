@@ -1,6 +1,6 @@
 <?php
 
 namespace app\entity;
-class subsections
+class Subsections extends \yii\db\ActiveRecord
 {
 }

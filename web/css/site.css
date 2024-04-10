@@ -11,6 +11,18 @@ header, footer {
     padding: 10px 0;
 }
 
+.logo_head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo_head span {
+    padding-left: 10px;
+    border-left: 1px solid #fff;
+}
+
 a {
     text-decoration: none;
     color: #fff;
@@ -135,3 +147,4 @@ main {
 .forum_section:hover {
     background: #00000019;
 }
+

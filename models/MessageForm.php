@@ -12,7 +12,7 @@ class MessageForm extends Model
     {
         return [
             ['text', 'required'],
-            ['text', 'sting']
+            ['text', 'string']
         ];
     }
 

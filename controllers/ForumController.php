@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\MessageForm;
 use app\models\SectionForm;
 use app\repository\ForumRepository;
+use app\repository\UsersRepository;
 use Yii;
 use yii\web\Controller;
 
@@ -91,16 +92,20 @@ class ForumController extends Controller
         $title = ForumRepository::getTopicsTitle(Yii::$app->request->get('id'));
         $this->view->title = $title;
         $messages = ForumRepository::getMessages(Yii::$app->request->get('id'));
+        $topicAuthor = UsersRepository::getUserById(ForumRepository::getTopicAuthor(
+            Yii::$app->request->get('id')
+        ));
         $model = new MessageForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             ForumRepository::createMessage(
-                $model->title,
+                $model->text,
                 Yii::$app->request->get('id'),
                 Yii::$app->user->id
             );
         }
         return $this->render("messages", [
             'messages' => $messages,
+            'topicAuthor' => $topicAuthor->login,
             'model' => $model
         ]);
     }

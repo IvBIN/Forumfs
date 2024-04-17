@@ -19,12 +19,12 @@ class ForumController extends Controller
         ]);
     }
 
-    public function actionSubsections()
+    public function actionSubsections($id)
     {
-        $title = ForumRepository::getSectionTitle(Yii::$app->request->get('id'));
+        $title = ForumRepository::getSectionTitle($id);
         $this->view->title = $title;
         return $this->render("subsections", [
-            'subsections' => ForumRepository::getSubSections(Yii::$app->request->get())
+            'subsections' => ForumRepository::getSubSections($id)
         ]);
     }
 
@@ -108,5 +108,16 @@ class ForumController extends Controller
             'topicAuthor' => $topicAuthor->login,
             'model' => $model
         ]);
+    }
+
+    public function actionRandomTopic()
+    {
+        $allTopics = ForumRepository::getTopics();
+        $allId = [];
+        foreach ($allTopics as $topic) {
+            $allId[] = $topic->id;
+        }
+        $id = rand(1, count($allId)) - 1;
+        return $this->redirect("/forum/messages?id=$allId[$id]");
     }
 }
